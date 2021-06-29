@@ -1,0 +1,74 @@
+<h3 class="display-5">{{title}}</h3>
+<form action="/cats/create" method="post" enctype="multipart/form-data">
+    <div class="mb-3 row">
+        <label for="name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+            <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form-control {{hasError errors 'name'}}">
+            <div id="validationNameFeedback" class="invalid-feedback">
+                Please provide a valid city.
+            </div>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="age" class="col-sm-2 col-form-label">Age</label>
+        <div class="col-sm-10">
+            <input type="date" id="age" name="age" class="form-control">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="color" class="col-sm-2 col-form-label">Color</label>
+        <div class="col-sm-10">
+            <select name="color" id="color" class="form-select">
+                {{#each colors}}
+                    <option value="{{@index}}">{{this}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="gender" class="col-sm-2 col-form-label">Gender</label>
+        <div class="col-sm-10">
+            <select name="gender" id="gender" class="form-select">
+                <option value="1">кот</option>
+                <option value="0">кошка</option>
+            </select>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="length" class="col-sm-2 col-form-label">Length</label>
+        <div class="col-sm-10">
+            <input type="text" id="length" name="length" class="form-control">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="weight" class="col-sm-2 col-form-label">Weight</label>
+        <div class="col-sm-10">
+            <input type="text" id="weight" name="weight" class="form-control">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="height" class="col-sm-2 col-form-label">Height</label>
+        <div class="col-sm-10">
+            <input type="number" id="height" name="height" class="form-control">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="price" class="col-sm-2 col-form-label">Price</label>
+        <div class="col-sm-10">
+            <input type="number" id="price" name="price" class="form-control">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="photo" class="col-sm-2 col-form-label">Photo</label>
+        <div class="col-sm-10">
+            <input type="file" id="photo" name="photo" class="form-control">
+        </div>
+    </div>
+
+
+    <input type="submit" value="Add new" class="btn btn-primary">
+</form>

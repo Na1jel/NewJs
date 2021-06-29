@@ -1,0 +1,231 @@
+<h1 class="display-5">redactor a cat</h1>
+<form action="/cats/red/{{this.id}}" method="post" enctype="application/x-www-form-urlencoded">
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">name</label>
+    <input
+      type="text"
+      class="form-control"
+      name="name"
+      id="name"
+      id="formGroupExampleInput"
+      placeholder="Name"
+      value="{{cat.name}}"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">age</label>
+    <input
+      type="text"
+      class="form-control"
+      name="age"
+      id="age"
+      id="formGroupExampleInput2"
+      placeholder="Age"
+      value="{{cat.age}}"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">color</label>
+    <input
+      type="text"
+      class="form-control"
+      name="color"
+      id="color"
+      id="formGroupExampleInput2"
+      placeholder="Color"
+      value="{{cat.color}}"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">gender</label>
+    <input
+      type="text"
+      class="form-control"
+      name="gender"
+      id="gender"
+      id="formGroupExampleInput2"
+      placeholder="Gender"
+      value="{{cat.gender}}"
+    />
+  </div>
+   <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">length</label>
+    <input
+      type="text"
+      class="form-control"
+      name="length"
+      id="length"
+      id="formGroupExampleInput2"
+      placeholder="length"
+      value="{{cat.length}}"
+    />
+  </div>
+   <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">weight</label>
+    <input
+      type="text"
+      class="form-control"
+      name="weight"
+      id="weight"
+      id="formGroupExampleInput2"
+      placeholder="weight"
+      value="{{cat.weight}}"
+    />
+  </div>
+   <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">height</label>
+    <input
+      type="text"
+      class="form-control"
+      name="height"
+      id="height"
+      id="formGroupExampleInput2"
+      placeholder="height"
+      value="{{cat.height}}"
+    />
+  </div>
+   <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">price</label>
+    <input
+      type="text"
+      class="form-control"
+      name="price"
+      id="price"
+      id="formGroupExampleInput2"
+      placeholder="price"
+      value="{{cat.price}}"
+    />
+  </div>
+      <div class="mb-3">
+      <a href="/cats"><input type="submit" value="redactor" class="btn btn-info"></a>  
+    </div>
+  <a class="dropdown-item" href="/cats">Back to list</a>  
+</form>
+
+{{!-- <h3 class="display-5">{{title}}</h3>
+<form action="/cats/red/{{this.id}}" method="post" enctype="multipart/form-data">
+  <div class="mb-3 row">
+    <label for="name" class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-10">
+      <input
+         type="text"
+      class="form-control"
+      name="name"
+      id="name"
+      id="formGroupExampleInput"
+      placeholder="Name"
+      value="{{cat.name}}"
+      
+      />
+      <div id="validationNameFeedback" class="invalid-feedback">
+        Please provide a valid city.
+      </div>
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="age" class="col-sm-2 col-form-label">Age</label>
+    <div class="col-sm-10">
+      <input
+      type="text"
+      class="form-control"
+      name="age"
+      id="age"
+      id="formGroupExampleInput2"
+      placeholder="Age"
+      value="{{cats.age}}"
+    />
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="color" class="col-sm-2 col-form-label">Color</label>
+    <div class="col-sm-10">
+      <input
+      type="text"
+      class="form-control"
+      name="color"
+      id="color"
+      id="formGroupExampleInput2"
+      placeholder="Color"
+      value="{{cat.color}}"
+    />
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="gender" class="col-sm-2 col-form-label">Gender</label>
+    <div class="col-sm-10">
+         <input
+      type="text"
+      class="form-control"
+      name="gender"
+      id="gender"
+      id="formGroupExampleInput2"
+      placeholder="Gender"
+      value="{{cat.gender}}"
+    />
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="length" class="col-sm-2 col-form-label">Length</label>
+    <div class="col-sm-10">
+            <input
+      type="text"
+      class="form-control"
+      name="length"
+      id="length"
+      id="formGroupExampleInput2"
+      placeholder="length"
+      value="{{cat.length}}"
+    />
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="weight" class="col-sm-2 col-form-label">Weight</label>
+    <div class="col-sm-10">
+            <input
+      type="text"
+      class="form-control"
+      name="weight"
+      id="weight"
+      id="formGroupExampleInput2"
+      placeholder="weight"
+      value="{{cat.weight}}"
+    />
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="height" class="col-sm-2 col-form-label">Height</label>
+    <div class="col-sm-10">
+     <input
+      type="text"
+      class="form-control"
+      name="height"
+      id="height"
+      id="formGroupExampleInput2"
+      placeholder="height"
+      value="{{cat.height}}"
+    />
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="price" class="col-sm-2 col-form-label">Price</label>
+    <div class="col-sm-10">
+        <input
+      type="text"
+      class="form-control"
+      name="price"
+      id="price"
+      id="formGroupExampleInput2"
+      placeholder="price"
+      value="{{cat.price}}"
+    />
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="photo" class="col-sm-2 col-form-label">Photo</label>
+    <div class="col-sm-10">
+      <input type="file" id="photo" name="photo" class="form-control" />
+    </div>
+  </div>
+
+  <input type="submit" value="Redactor" class="btn btn-primary" />
+</form> --}}

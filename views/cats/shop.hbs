@@ -1,0 +1,61 @@
+<h1 class="display-5">{{title}}</h1>
+<form action="/cats/shop" method="get">
+    <div class="row">
+        <div class="col">
+            <input
+                    type="text"
+                    name="priceFrom"
+                    class="form-control"
+                    placeholder="price from"
+                    aria-label="price-from"
+                    value="{{query.priceFrom}}"
+            >
+        </div>
+        <div class="col">
+            <input
+                    type="text"
+                    name="priceTo"
+                    class="form-control"
+                    placeholder="price to"
+                    aria-label="price-to"
+                    value="{{query.priceTo}}"
+
+            >
+        </div>
+        <div class="col">
+            <select name="gender" id="gender" aria-label="gender" class="form-select">
+                <option value="2" {{isSelected query.gender '2'}}>выберите пол</option>
+                <option value="1" {{isSelected query.gender '1'}}>кот</option>
+                <option value="0" {{isSelected query.gender '0'}}>кошка</option>
+            </select>
+        </div>
+        <div class="col">
+            <input
+                    type="date"
+                    name="age"
+                    class="form-control"
+                    placeholder="age"
+                    aria-label="age"
+                    value="{{query.age}}"
+            >
+        </div>
+        <div class="col">
+            <input type="submit" class="btn btn-info" value="Filter">
+        </div>
+    </div>
+</form>
+<div class="cats d-flex flex-wrap">
+    {{#each cats}}
+        <div class="card">
+            <h3 class="display-3">{{this.name}}</h3>
+            <img src="{{this.photo}}" alt="">
+            {{this.price}}
+            {{#if this.gender}}
+                кот
+            {{else}}
+                кошка
+            {{/if}}
+            {{this.age}}
+        </div>
+    {{/each}}
+</div>
