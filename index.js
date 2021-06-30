@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 //             title: 'Redactor cat'
 //         });
 //     })
-// })
+// })                   
 
 
 // app.post('cats/red', (req, res) => {

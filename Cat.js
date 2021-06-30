@@ -53,8 +53,7 @@ class Cat {
 
     static remove(connection, id) {
         return connection.promise().query(
-            'DELETE FROM `cats` WHERE `id`=?',
-            [id]
+            'DELETE FROM `cats` WHERE `id`=?', [id]
         )
     }
 
@@ -62,26 +61,25 @@ class Cat {
         const offset = (page - 1) * 10
         return Promise.all([
             connection.promise().query(
-                'SELECT * FROM `cats` LIMIT 10 OFFSET ?',
-                [offset]
+                'SELECT * FROM `cats` LIMIT 10 OFFSET ?', [offset]
             )
-                .then(res => {
-                    let cats = res.shift();
-                    cats = cats.map(Cat.createCatFrom)
-                    return cats;
-                })
-                .catch(error => {
-                    console.log(error);
-                }),
+            .then(res => {
+                let cats = res.shift();
+                cats = cats.map(Cat.createCatFrom)
+                return cats;
+            })
+            .catch(error => {
+                console.log(error);
+            }),
             connection
-                .promise()
-                .query('SELECT COUNT(*) as count FROM `cats`')
-                .then(data => {
-                    return data.shift().shift().count
-                })
-                .catch(error => {
-                    console.log(error);
-                })
+            .promise()
+            .query('SELECT COUNT(*) as count FROM `cats`')
+            .then(data => {
+                return data.shift().shift().count
+            })
+            .catch(error => {
+                console.log(error);
+            })
         ])
     }
 
@@ -103,7 +101,7 @@ class Cat {
                 query += ' `price` < ?'
                 params.push(Number.parseInt(filter.priceTo));
             }
-            if(filter.gender.length && filter.gender !== '2'){
+            if (filter.gender.length && filter.gender !== '2') {
                 if (params.length) {
                     query += ' AND ';
                 } else {
@@ -133,9 +131,8 @@ class Cat {
 
     static getById(connection, id) {
         return connection.promise().query(
-            'SELECT * FROM `cats` WHERE `id`=?',
-            [id]
-        )
+                'SELECT * FROM `cats` WHERE `id`=?', [id]
+            )
             .then(rows => {
                 const array = rows.shift();
                 if (array.length) {
@@ -153,18 +150,17 @@ class Cat {
     save(connection) {
         if (this.id === undefined) {
             return connection.promise().query(
-                'INSERT INTO `cats` (`name`, `birthdate`, `color`,`photo`, `gender`, `length`, `weight`, `height`, `price`) VALUES (?,?,?,?,?,?,?,?,?)',
-                [
-                    this.name,
-                    this.birthdate,
-                    Cat.colors.indexOf(this.color),
-                    this.photo,
-                    this.gender,
-                    this.length,
-                    this.weight,
-                    this.height,
-                    this.price
-                ])
+                    'UPDATE INTO `cats` (`name`, `birthdate`, `color`,`photo`, `gender`, `length`, `weight`, `height`, `price`) VALUES (?,?,?,?,?,?,?,?,?)', [
+                        this.name,
+                        this.birthdate,
+                        Cat.colors.indexOf(this.color),
+                        this.photo,
+                        this.gender,
+                        this.length,
+                        this.weight,
+                        this.height,
+                        this.price
+                    ])
                 .then((rows) => {
                     this.id = rows.shift().insertId;
                     return Promise.resolve(this);
@@ -177,4 +173,3 @@ class Cat {
 }
 
 export default Cat
-
