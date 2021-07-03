@@ -41,12 +41,8 @@ router.get('/', async(req, res) => {
     )
 
 });
-router.get('/red/id', (req, res) => {
+router.get('/red:id', (req, res) => {
     const id = req.params.id;
-    // cat.getById(connection, id)
-    //     .then(cat => {
-    //         res.redirect('/cats/redactorCats')
-    //     })
     connection.query('SELECT * FROM cats WHERE id=?', [id], function(err, data) {
         if (err) {
             return console.log(err)
@@ -59,7 +55,7 @@ router.get('/red/id', (req, res) => {
     })
 })
 
-router.post('/red', urlencodedParser, function(req, res) {
+router.post('/red:id', urlencodedParser, function(req, res) {
 
 
     if (!req.body) return res.sendStatus(400);
@@ -73,10 +69,7 @@ router.post('/red', urlencodedParser, function(req, res) {
     const price = req.body.price;
     const id = req.body.id;
 
-    // cat.save(connection)
-    //     .then(cat => {
-    //         res.redirect(`/cats`)
-    //     })
+
     connection.query("UPDATE cats SET name=?, birthdate=?, color=?, gender=?, length=?, weight=?, height=?, price=? WHERE id=? ", [name, birthdate, gender, color, length, weight, height, price, id],
         function(err, data) {
             if (err) return console.log(err);
@@ -84,6 +77,8 @@ router.post('/red', urlencodedParser, function(req, res) {
             res.redirect("/cats");
         });
 })
+
+
 router.post('/', (req, res) => {
     if (req.body._method === 'DELETE') {
         Cat.remove(connection, req.body.id)

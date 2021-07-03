@@ -150,7 +150,7 @@ class Cat {
     save(connection) {
         if (this.id === undefined) {
             return connection.promise().query(
-                    'UPDATE INTO `cats` (`name`, `birthdate`, `color`,`photo`, `gender`, `length`, `weight`, `height`, `price`) VALUES (?,?,?,?,?,?,?,?,?)', [
+                    'INSERT INTO `cats` (`name`, `birthdate`, `color`,`photo`, `gender`, `length`, `weight`, `height`, `price`) VALUES (?,?,?,?,?,?,?,?,?)', [
                         this.name,
                         this.birthdate,
                         Cat.colors.indexOf(this.color),
@@ -168,6 +168,22 @@ class Cat {
                 .catch(error => {
                     console.log(error);
                 });
+        }
+    }
+    redactor(connection) {
+        if (this.id) {
+            return connection.promise().query(
+                'UPDATE cats SET name=?, birthdate=?, color=?, gender=?, length=?, weight=?, height=?, price=? WHERE id=? ', [
+                    this.name,
+                    this.birthdate,
+                    Cat.colors.indexOf(this.color),
+                    this.photo,
+                    this.gender,
+                    this.length,
+                    this.weight,
+                    this.height,
+                    this.price
+                ])
         }
     }
 }
